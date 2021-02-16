@@ -1,0 +1,49 @@
+<view class="searchContainer">
+    <view class="header">
+        <view class="searchInput">
+            <text class="iconfont icon-sousuo searchicon"></text>
+            <input type="text" value="{{searchContent}}" placeholder="{{placeholderContent}}" placeholder-class="input-placeholder" bindinput="handleInput"/>
+            <view class="deleteSearch" bindtap="deleteSearch" hidden="{{!searchContent}}">X</view>
+        </view>
+        <text class="cancle">取消</text>
+    </view>
+
+    <!-- 搜索内容展示 -->
+    <block wx:if="{{searchContent.length}}">
+        <view class="showSearchContent">
+            <view class="searchContent">搜索内容：{{searchContent}}</view>
+            <view class="searchList">
+                <view class="searchItem" wx:for="{{searchList}}" wx:key="id">
+                    <text class="iconfont icon-sousuo"></text>
+                    <text class="content">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <!-- 热搜榜 -->
+    <block wx:else>
+        <!-- 搜索历史记录 -->
+        <view class="history" wx:if="{{historyList.length}}">
+            <view class="header">
+                <view class="title">历史搜索记录</view>
+                <text class="iconfont icon-shanchu" bindtap="deleteHistory"></text>
+            </view>
+            <view class="historyList">
+                <view class="historyItem" wx:for="{{historyList}}">
+                    {{item}}
+                </view>
+            </view> 
+        </view>
+        <view class="hotContainer">
+            <view class="title">热搜榜</view>
+            <!-- 热搜列表 -->
+            <view class="hotList">
+                <view class="hotItem" wx:for="{{hotList}}" wx:key="{{searchWord}}">
+                    <text class="order">{{index+1}}</text>
+                    <text >{{item.searchWord}}</text>
+                    <image class="iconimg" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}" />
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

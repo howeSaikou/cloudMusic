@@ -1,0 +1,66 @@
+<view class="videoContainer">
+    <!-- 头部区域 -->
+    <view class="header">
+        <image src="/static/images/video/video.jpg" />
+        <input type="text" placeholder="搜索音乐" class="search" bindtap="toSearch"></input>
+        <image src="/static/images/logo.png" />
+    </view>
+    <!-- 导航栏 -->
+    <scroll-view 
+        class="navScroll" 
+        enable-flex scroll-x="{{true}}" 
+        scroll-with-animation 
+        scroll-into-view="{{'scroll'+ currentNavId}}"> 
+        <!-- scroll-into-view需要控制的子元素的id -->
+        <!-- 给下面导航栏一个id ，scroll-into-view的id和导航栏id相等才能生效 -->
+        <view id="{{'scroll'+ item.id}}" class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
+            <!-- 方法一：id传参：id="" 传item.id，在事件里提出来赋值给currentId -->
+            <!-- 方法二：key传参：data-id="" -->
+            <view class="navContent {{currentNavId===item.id?'native':''}}" bindtap="native" data-id="{{item.id}}">
+                {{item.name}}
+            </view>
+        </view>
+    </scroll-view>
+    
+    <!-- 视频 -->
+    <scroll-view 
+        class="videoScroll" 
+        scroll-y="{{true}}"
+        refresher-enabled
+        refresher-triggered="{{isTrigger}}"
+        bindrefresherrefresh="handleFresh">
+            <view class="videoItem" wx:for="{{videoList}}" wx:key="id"> 
+                <video 
+                    autoplay="{{true}}"
+                    enable-play-gesture
+                    bindplay="handlePlay"
+                    bindended="handleEnd"
+                    bindtimeupdate="handleTimeUpdate"
+                    object-fit="cover"
+                    class="common"
+                    wx:if="{{videoId === item.data.vid}}"
+                    id="{{item.data.vid}}"
+                    src="{{item.data.urlInfo.url}}" 
+                    poster="{{item.data.coverUrl}}"/>
+                <!-- image没有id的，给一个id，同样在handlePlay中找currentTargetId，赋值给videoId，因为video和image给的同一个id，
+                     只有点击事件触发，得到的currentTargetId是同一个，就会转为video -->
+                <image wx:else  class="common" src="{{item.data.coverUrl}}" id="{{item.data.vid}}" bindtap="handlePlay"/>
+                <view class="content">{{item.data.title}}</view>
+                <view class="footer">
+                    <image class="avatar" src="{{item.data.creator.avatarUrl}}" />
+                    <text class="nickName">{{item.data.creator.nickname}}</text>
+                    <button class="item" open-type="share">
+                        <text class="iconfont icon-fenxiang1"></text>
+                    </button>
+                    <view class="item">
+                        <text class="iconfont icon-pinglun"></text>
+                        <text class="count">{{item.data.commentCount}}</text>
+                    </view>
+                    <view class="item">
+                        <text class="iconfont icon-shoucang"></text>
+                        <text class="count">{{item.data.shareCount}}</text>
+                    </view>
+                </view>
+            </view>
+    </scroll-view>
+</view>

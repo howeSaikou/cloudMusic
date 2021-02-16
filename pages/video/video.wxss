@@ -1,0 +1,122 @@
+/* pages/video/video.wxss */
+
+.videoContainer .header {
+    /* 高度为包裹元素高度 */
+    display: flex;
+    padding: 10rpx;
+}
+
+.videoContainer .header .search {
+    /* flex-grow: 可拉伸; flex-shrink: 可压缩; flex-basis: 当前元素自身宽度; */
+    /* flex默认值：flex-grow=0; flex-shrink: 1; flex-basis: auto; */
+    /* flex:1: flex-grow: 1;  flex-shrink: 1; flex-basis: 0; */
+    /* flex:auto : flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
+    /* flex:1 会导致父元素宽度自动为100% ，所以search就占据剩余部分*/
+    flex: 1;
+    color: #d43c33;
+    margin: 0 20rpx;
+    font-size: 26rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.videoContainer .header image {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+
+/* 导航栏 */
+
+.navScroll {
+    height: 60rpx;
+    display: flex;
+    white-space: nowrap;
+}
+
+.navScroll .navItem {
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 30rpx;
+    font-size: 30rpx;
+}
+
+.navScroll .navContent {
+    height: 60rpx;
+    box-sizing: border-box;
+}
+
+.native {
+    color: #d43c33;
+    border-bottom: 1px solid #d43c33;
+}
+
+
+/* 视频列表 */
+
+.videoScroll {
+    margin-top: 10rpx;
+    /* calc：可以动态计算css的宽高 运算符两侧必须加空格，否则计算失效*/
+    /* 视口单位 vh  vw   1vh等于1%的视口高度 1vw等于1%的视口宽度*/
+    height: calc(100vh - 155rpx);
+}
+
+.videoItem {
+    padding: 0 3%;
+}
+
+.videoItem .common {
+    width: 100%;
+    height: 360rpx;
+    border-radius: 10rpx;
+}
+
+.videoItem .content {
+    font-size: 26rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.footer {
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.footer .avatar {
+    position: relative;
+    top: 10rpx;
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+}
+
+.footer .nickName {
+    position: relative;
+    bottom: 5rpx;
+    padding-left: 20rpx;
+    font-size: 26rpx;
+}
+
+.footer button {
+    text-align: center;
+}
+
+.footer .item {
+    float: right;
+    font-size: 20rpx;
+    background-color: #fff;
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.footer .item .count {
+    position: relative;
+    bottom: 30rpx;
+}
+
+.footer .item .iconfont {
+    width: 50rpx;
+    height: 50rpx;
+}

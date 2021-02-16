@@ -1,0 +1,86 @@
+.header {
+    position: relative;
+    width: 100%;
+    height: 300rpx;
+}
+
+.header image {
+    width: 100%;
+    height: 100%;
+}
+
+.header .date {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150rpx;
+    margin-top: -50rpx;
+    font-size: 38rpx;
+    text-align: center;
+    line-height: 100rpx;
+    width: 300rpx;
+    height: 100rpx;
+    color: #fff;
+}
+
+
+/* 内容区 */
+
+.ListContainer {
+    padding: 0 20rpx;
+    background-color: #fff;
+    border-radius: 30rpx;
+    position: relative;
+    top: -20rpx;
+}
+
+.ListHeader {
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 10rpx;
+}
+
+.ListHeader .changeMore {
+    float: right;
+}
+
+.ListScroll {
+    height: calc(100vh - 380rpx);
+}
+
+.ListContent {
+    padding: 0 10rpx;
+    display: flex;
+    margin-bottom: 20rpx;
+    position: relative;
+}
+
+.ListContent image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
+}
+
+.ListContent .iconfont {
+    position: absolute;
+    width: 50rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    right: 0;
+}
+
+.musicInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+    font-size: 26rpx;
+    max-width: 450rpx;
+}
+
+.musicInfo text {
+    height: 50rpx;
+    line-height: 50rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
